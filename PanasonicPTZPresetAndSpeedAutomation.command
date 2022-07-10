@@ -26,7 +26,7 @@ read -t 1 -n 1 key
 
 if [[ $key = 1 ]]; then
 osascript -e 'tell application "ATEM Software Control" to activate'
-osascript -e 'tell application "System Events" to keystroke 1 using command down'
+osascript -e 'tell application "System Events" to keystroke 1 using control down'
 osascript -e 'tell application "Terminal" to activate'
 key=clear
 fi
@@ -34,7 +34,7 @@ fi
 
 if [[ $key = 2 ]]; then
 osascript -e 'tell application "ATEM Software Control" to activate'
-osascript -e 'tell application "System Events" to keystroke 2 using command down'
+osascript -e 'tell application "System Events" to keystroke 2 using control down'
 osascript -e 'tell application "Terminal" to activate'
 key=clear
 fi
