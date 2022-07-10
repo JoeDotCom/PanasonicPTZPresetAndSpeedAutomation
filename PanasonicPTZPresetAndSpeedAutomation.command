@@ -24,12 +24,27 @@ do
 read -t 1 -n 1 key
 
 
+if [[ $key = 1 ]]; then
+osascript -e 'tell application "ATEM Software Control" to activate'
+osascript -e 'tell application "System Events" to keystroke 1 using command down'
+osascript -e 'tell application "Terminal" to activate'
+key=clear
+fi
+
+
+if [[ $key = 2 ]]; then
+osascript -e 'tell application "ATEM Software Control" to activate'
+osascript -e 'tell application "System Events" to keystroke 2 using command down'
+osascript -e 'tell application "Terminal" to activate'
+key=clear
+fi
+
 
 #######################
 # speed selection
 ######################
-if [[ $key = 1 ]]; then speed=100; speedmod=100; key=clear; fi
-if [[ $key = 2 ]]; then speed=200; speedmod=200; key=clear; fi
+# if [[ $key = 1 ]]; then speed=100; speedmod=100; key=clear; fi
+# if [[ $key = 2 ]]; then speed=200; speedmod=200; key=clear; fi
 if [[ $key = 3 ]]; then speed=300; speedmod=300; key=clear; fi
 if [[ $key = 4 ]]; then speed=400; speedmod=400; key=clear; fi
 if [[ $key = 5 ]]; then speed=500; speedmod=500; key=clear; fi
@@ -148,8 +163,35 @@ if [[ $preset != $oldpreset ]] || [[ $triggerpreset = 1 ]]
 		
 		oldpreset=$preset
 		triggerpreset=0
+
+		if [[ $preset = 27 ]] || [[ $preset = 28 ]]
+		then 
+		say "Left" -r 400 
+		fi
+
+		if [[ $preset = 20 ]] || [[ $preset = 21 ]]
+		then 
+		say "Mid" -r 400 
+		fi
+
+		if [[ $preset = 23 ]] || [[ $preset = 24 ]]
+		then 
+		say "Right" -r 400 
+		fi				
+		
+#		if [[ $preset = 23 ]] || [[ $preset = 24 ]]
+#		 THEN 
+#		 say "Right" -r 400 
+#		 fi
+#		if [[ $preset = 27 ]] || [[ $preset = 28 ]] 
+#		THEN  
+#		say "left" -r 400
+#		 fi
+		
+say $speedmod	 -r 400	
 	fi
 				
+
 
 
 
